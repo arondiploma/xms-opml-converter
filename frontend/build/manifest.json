@@ -1,0 +1,8 @@
+{
+  "short_name": "XLS to OPML converter",
+  "name": "Simple application that convert XLS to OPML",
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}

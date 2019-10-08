@@ -1,0 +1,1 @@
+export {default as xlsParser} from "./xls-parser";
