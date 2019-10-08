@@ -1,7 +1,8 @@
 var gulp = require('gulp');
 const { parallel, src, dest } = require('gulp');
 var ts = require('gulp-typescript');
-
+var path = require("path");
+var fs = require("fs");
 var tsProject = ts.createProject('tsconfig.json');
 
 function buildTS() {
@@ -10,12 +11,12 @@ function buildTS() {
 }
 
 function copyViews() {
-    return src('src/views/*.*')
+    return src('src/views/*/*.*')
         .pipe(dest(tsProject.config.compilerOptions.outDir + "/views"));
 }
 
 function copyStatic() {
-    return src('src/public/*')
+    return src('src/public/*/*.*')
         .pipe(dest(tsProject.config.compilerOptions.outDir + "/public"));
 }
 

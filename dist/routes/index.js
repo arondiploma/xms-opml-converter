@@ -8,6 +8,6 @@ const path_1 = __importDefault(require("path"));
 const router = express_1.Router();
 /* GET home page. */
 router.get('/', function (req, res, next) {
-    res.sendFile(path_1.default.join(__dirname + '../../../pubic/index.html'));
+    res.sendFile(path_1.default.join(__dirname + '../../../frontend/build/index.html'));
 });
 exports.default = router;
