@@ -7,7 +7,7 @@ import xmlbuilder from "xmlbuilder";
 import fs from "fs";
 
 const router = Router();
-const upload = multer({ dest: 'uploads/' })
+const upload = multer({ dest: path.resolve('uploads/') })
 
 router.post('/convert', upload.single("file"), async (req, res, next) => {
 
@@ -15,7 +15,7 @@ router.post('/convert', upload.single("file"), async (req, res, next) => {
   const filePath: string = path.resolve(file.path);
   const xlsJson: result = await xlsParser(filePath);
 
-  fs.unlink(filePath, () => { });
+  //fs.unlink(filePath, () => { });
 
   if (xlsJson.success && xlsJson.rows) {
     const xml = xmlbuilder.create('xml', { version: "1.0" });

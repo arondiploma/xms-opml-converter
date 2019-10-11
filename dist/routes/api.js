@@ -17,14 +17,13 @@ const multer_1 = __importDefault(require("multer"));
 const helpers_1 = require("../helpers");
 const path_1 = __importDefault(require("path"));
 const xmlbuilder_1 = __importDefault(require("xmlbuilder"));
-const fs_1 = __importDefault(require("fs"));
 const router = express_1.Router();
-const upload = multer_1.default({ dest: 'uploads/' });
+const upload = multer_1.default({ dest: path_1.default.resolve('uploads/') });
 router.post('/convert', upload.single("file"), (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     const file = req.file;
     const filePath = path_1.default.resolve(file.path);
     const xlsJson = yield helpers_1.xlsParser(filePath);
-    fs_1.default.unlink(filePath, () => { });
+    //fs.unlink(filePath, () => { });
     if (xlsJson.success && xlsJson.rows) {
         const xml = xmlbuilder_1.default.create('xml', { version: "1.0" });
         const opml = xml.ele("opml", { version: "2.0" });
